@@ -1,50 +1,147 @@
-# Welcome to your Expo app 👋
+# iTodo App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+iTodo is a task management app built using React Native and Expo for the frontend, with a Node.js and Express backend connected to a MongoDB database. This app allows users to create, manage, and organize their tasks with categories, due dates, and priorities.
 
-## Get started
+## Table of Contents
 
-1. Install dependencies
+- [Introduction](#introduction)
+- [Features](#features)
+- [Architecture](#architecture)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Backend API Endpoints](#backend-api-endpoints)
+- [Configuration](#configuration)
+- [Dependencies](#dependencies)
+- [Contributors](#contributors)
 
-   ```bash
-   npm install
-   ```
+## Introduction
 
-2. Start the app
+The iTodo app is designed to help users manage their daily tasks efficiently. Users can add tasks, categorize them, set due dates, mark them as completed, and delete them when necessary. The app also allows sorting tasks by due date, creation date, or priority.
 
-   ```bash
-    npx expo start
-   ```
+## Features
 
-In the output, you'll find options to open the app in a
+- **Task Management:** Add, update, delete, and view tasks.
+- **Categorization:** Categorize tasks into various categories like "Work," "Personal," etc.
+- **Priority Management:** Mark tasks as high priority.
+- **Date Management:** Set due dates and sort tasks based on due dates, creation dates, or priority.
+- **User Authentication:** User registration and login functionality.
+- **Offline Storage:** Store user data locally using AsyncStorage.
+- **Gestures:** Swipe to delete tasks or mark as completed.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Architecture
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- **Frontend:** Built with React Native and Expo. Utilizes components for task management, modals for adding tasks, and AsyncStorage for local data storage.
+- **Backend:** Built with Node.js, Express, and MongoDB. The backend handles user authentication and task management, connecting to the MongoDB database hosted on Atlas.
 
-## Get a fresh project
+## Installation
 
-When you're ready, run:
+### Prerequisites
 
-```bash
-npm run reset-project
-```
+- **Node.js** and **npm** installed on your machine.
+- **Expo CLI** installed globally.
+- **MongoDB** database (preferably MongoDB Atlas).
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Backend Setup
 
-## Learn more
+1. Clone the repository:
 
-To learn more about developing your project with Expo, look at the following resources:
+    ```bash
+    git clone https://github.com/hixmanshu00/itodo.git
+    cd itodo-app/backend
+    ```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+2. Install backend dependencies:
 
-## Join the community
+    ```bash
+    npm install
+    ```
 
-Join our community of developers creating universal apps.
+3. Create a `.env` file in the root of the backend directory and add your MongoDB connection string:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+    ```env
+    MONGO_URI=mongodb+srv://your_username:your_password@cluster0.mongodb.net/iTodo?retryWrites=true&w=majority
+    ```
+
+4. Start the backend server:
+
+    ```bash
+    npm start
+    ```
+
+    The server will run on `http://localhost:5000`.
+
+### Frontend Setup
+
+1. Navigate to the frontend directory:
+
+    ```bash
+    cd ../frontend
+    ```
+
+2. Install frontend dependencies:
+
+    ```bash
+    npm install
+    ```
+
+3. Start the Expo development server:
+
+    ```bash
+    npm start
+    ```
+
+4. Use the Expo Go app on your mobile device or an emulator to run the app.
+
+## Usage
+
+1. **User Authentication:**
+   - Register and login as a user.
+   - Upon successful login, your tasks will be fetched from the server.
+
+2. **Task Management:**
+   - Add new tasks by pressing the `+` button.
+   - Assign a category and due date.
+   - View tasks by category.
+   - Mark tasks as completed or delete them.
+   - Sort tasks by due date, creation date, or priority.
+
+## Backend API Endpoints
+
+- **User Routes:**
+  - `POST /users/register` - Register a new user.
+  - `POST /users/login` - Login a user.
+
+- **Todo Routes:**
+  - `GET /todos/:userId` - Get all todos for the logged-in user.
+  - `GET /todos/completed/:date` - Get all completed todos for a specific date.
+  - `POST /todos/:userId` - Create a new todo.
+  - `PUT /todos/:todoId` - Update an existing todo.
+  - `DELETE /todos/:todoId` - Delete a todo by ID.
+  - `PATCH /todos/:todoId/toggleStatus` - Toggle pending/complete status of a todo.
+  - `PATCH /todos/:todoId/togglePriority` - Toggle priority of a todo.
+
+## Configuration
+
+- **MongoDB:** The app uses MongoDB Atlas for database storage. Ensure the connection string in the backend `.env` file is correctly set.
+- **Expo:** Ensure that the Expo CLI is set up properly, and the environment is configured for React Native development.
+
+## Dependencies
+
+### Backend
+
+- **Express:** Web framework for Node.js.
+- **Mongoose:** MongoDB object modeling for Node.js.
+- **Body-parser:** Middleware for parsing request bodies.
+- **Cors:** Middleware for enabling CORS.
+  
+### Frontend
+
+- **React Native:** Framework for building native apps using React.
+- **Expo:** A framework and a platform for universal React applications.
+- **React Navigation:** Routing and navigation for the React Native app.
+- **AsyncStorage:** Unencrypted, asynchronous, persistent, key-value storage system.
+- **Moment.js:** Parse, validate, manipulate, and display dates and times in JavaScript.
+
+## Contributors
+
+- **Himanshu Rajput** - [@hixmanshu00](https://github.com/hixmanshu00)
