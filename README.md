@@ -46,8 +46,8 @@ The iTodo app is designed to help users manage their daily tasks efficiently. Us
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/hixmanshu00/itodo.git
-    cd itodo-app/backend
+    git clone https://github.com/hixmanshu00/iTodo.git
+    cd iTodo/server
     ```
 
 2. Install backend dependencies:
@@ -75,7 +75,7 @@ The iTodo app is designed to help users manage their daily tasks efficiently. Us
 1. Navigate to the frontend directory:
 
     ```bash
-    cd ../frontend
+    cd ..
     ```
 
 2. Install frontend dependencies:
@@ -83,14 +83,19 @@ The iTodo app is designed to help users manage their daily tasks efficiently. Us
     ```bash
     npm install
     ```
+3. Create a `.env` file in the root of the backend directory and add your backend connection string:
 
-3. Start the Expo development server:
+    ```env
+    BACKEND_URL = yourIPAdress:5000
+    ```
+
+4. Start the Expo development server:
 
     ```bash
     npm start
     ```
 
-4. Use the Expo Go app on your mobile device or an emulator to run the app.
+5. Use the Expo Go app on your mobile device or an emulator to run the app.
 
 ## Usage
 
